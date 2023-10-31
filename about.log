@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.1.26)  30 OCT 2023 18:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.1.26)  31 OCT 2023 10:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -488,22 +488,17 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 \openout3 = `about.toc'.
 
 
-LaTeX Warning: File `Desktop/websitepic Small.jpeg' not found on input line 84.
+! LaTeX Error: File `Desktop/websitepic' not found.
 
-
-
-! Package pdftex.def Error: File `Desktop/websitepic Small.jpeg' not found: usi
-ng draft setting.
-
-See the pdftex.def package documentation for explanation.
+See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.84 ...udegraphics{Desktop/websitepic Small.jpeg}
-                                                   
+l.84 \includegraphics{Desktop/websitepic}
+                                          
 Here is how much of TeX's memory you used:
- 13063 strings out of 478268
- 207740 string characters out of 5846347
+ 13062 strings out of 478268
+ 207333 string characters out of 5846347
  529636 words of memory out of 5000000
  31033 multiletter control sequences out of 15000+600000
  501882 words of font info for 69 fonts, out of 8000000 for 9000
