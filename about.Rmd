@@ -7,9 +7,3 @@ output:
   pdf_document:
     toc: yes
 ---
-
-### About this site
-
-Here is a picture of me: 
-
-![](Desktop/websitepic)
