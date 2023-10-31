@@ -1,9 +1,15 @@
 ---
-title: "About"
+title: "Hi, I'm Yuki Low! Welcome to my website."
+output:
+  html_document:
+    toc: yes
+    toc_float: yes
+  pdf_document:
+    toc: yes
 ---
 
 ### About this site
 
-Sometimes you need to say a bit about the site -- how it was made, where it's hosted, where the source code can be found. 
+Here is a picture of me: 
 
-If this is for a project or analysis, I recommend giving some details about the R package versions that you used to create the content.
+![](Desktop/websitepic)

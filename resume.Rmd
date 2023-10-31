@@ -1,0 +1,66 @@
+---
+title: "Resume"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+### Education 
+
+M.S. in Biostatistics, Columbia University, New York
+
+Sep 2023 — Present
+
+
+B.S. in Statistics and Biology, Minor in Writing, University of Michigan, Ann Arbor
+
+Sep 2019 — Apr 2023
+
+
+### Employment History
+
+
+MATH 103 Course Assistant - University of Michigan, Ann Arbor
+
+Jun 2023 — Aug 2023
+
+* Lead weekly discussion sessions to reinforce and clarify math concepts covered in lectures, encouraging active participation from students.
+* Offer one-on-one assistance during office hours, addressing individual questions and providing personalized academic guidance.
+* Collaborate with the instructor to identify areas where the course material can be enhanced or clarified based on student feedback.
+
+Laboratory Research Assistant at Pfingst Lab - University of Michigan, Ann Arbor 
+
+Sep 2019 — May 2023
+
+* Conducted research to enhance the quality of life and speech recognition for cochlear implant patients.
+* Investigated the long-term effects of cochlear implants on deafened guinea pigs as model animals.
+* Analyzed various acoustic and electrical stimuli in relation to cochlear implants. 
+* Contributed to advancing understanding of cochlear implant technology and its
+impact on hearing-impaired individuals.
+
+
+Summer Intern at T.H. Chan SPH - Harvard University, Boston 
+
+May 2022 — Jul 2022
+
+* Employed R programming to conduct in-depth analysis of surgical outcomes in infants with single ventricle heart disease.
+* Developed statistical models to identify and assess risk factors contributing to surgical outcomes.
+* Contributed to the advancement of medical research by identifying and understanding key risk factors in congenital heart disease surgeries.
+
+Laboratory Research Assistant in Statistics Dept - University of Michigan, Ann Arbor
+
+Jan 2022 — Jun 2022
+
+* Utilized R programming to develop an automated system for identifying potential errors in cancer drug screening data.
+* Created custom data analysis scripts to enhance data quality and accuracy.
+
+Research Assistant - Mt. Sinai, New York City
+
+Jun 2017 — Sep 2019
+
+* Conducted data analysis on the NYC Youth Risk Behavior Surveillance Survey data.
+* Utilized SPSS software to process and analyze the dataset.
+* Investigated potential risk factors associated with adolescent e-cigarette usage.
+
+
