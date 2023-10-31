@@ -1,12 +1,15 @@
-name: "Yuki's Website"
+name: "yukis-website"
 output_dir: "."
 navbar:
-  title: "Home"
-  right:
+  title: "Yuki's Website"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "About Me"
+      href: about.html
     - text: "Resume"
-      href: resume.html
+    - href: resume.html
 output:
   html_document:
-    theme: cerulean
-    
-    
+    theme: flatly
+    css: style.css
