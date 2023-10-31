@@ -1,5 +1,5 @@
 ---
-title: "Hi, I'm Yuki Low! Welcome to my website."
+title: "Feel free to see my other projects and reach out to me!"
 output:
   html_document:
     toc: yes
@@ -7,3 +7,9 @@ output:
   pdf_document:
     toc: yes
 ---
+
+My GitHub account is linked [here](https://github.com/yukilow913).
+
+My LinkedIn is linked [here](www.linkedin.com/in/yuki-low-b14487223).
+
+My email is yl5503@cumc.columbia.edu.
