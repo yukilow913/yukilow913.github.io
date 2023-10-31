@@ -1,0 +1,12 @@
+name: "Yuki's Website"
+output_dir: "."
+navbar:
+  title: "Home"
+  right:
+    - text: "Resume"
+      href: resume.html
+output:
+  html_document:
+    theme: cerulean
+    
+    
