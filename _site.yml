@@ -8,7 +8,7 @@ navbar:
     - text: "About Me"
       href: about.html
     - text: "Resume"
-    - href: resume.html
+      href: resume.html
 output:
   html_document:
     theme: flatly
