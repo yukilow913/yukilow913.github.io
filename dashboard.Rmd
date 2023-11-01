@@ -1,8 +1,9 @@
-title: "Plots"
+---
+title: "Plotly"
 output: 
-  flexdashboard::flex_dashboard:
-    orientation: columns
-    vertical_layout: fill
+  html_document:
+    toc: true
+    toc_float: true
 ---
 
 
@@ -18,10 +19,6 @@ head(instacart)
 
 ```
 
-Column {data-width=650}
------------------------------------------------------------------------
-
-### Chart A
 
 ```{r}
 aisle_summary <- instacart %>%
@@ -29,8 +26,6 @@ aisle_summary <- instacart %>%
   summarize(count = n()) %>% 
   arrange(desc(count)) %>% 
   slice_head(n = 12)
-
-aisle_summary
 
 ggplot(data = aisle_summary, aes(x = "", y = count, fill = aisle)) +
   geom_bar(stat = "identity", width = 1) +
@@ -41,10 +36,6 @@ ggplot(data = aisle_summary, aes(x = "", y = count, fill = aisle)) +
   scale_fill_brewer(palette = "Set3")
 ```
 
-Column {data-width=350}
------------------------------------------------------------------------
-
-### Chart B
 
 ```{r}
 department_summary <- instacart %>%
@@ -60,8 +51,6 @@ ggplot(data = department_summary, aes(x = department, y = count)) +
   xlab("Department") +
   ylab("Count")
 ```
-
-### Chart C
 
 ```{r}
 ggplot(instacart, aes(x = "", y = order_hour_of_day)) +

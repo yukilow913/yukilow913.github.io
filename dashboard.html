@@ -11,7 +11,7 @@
 
 
 
-<title>dashboard.knit</title>
+<title>Plotly</title>
 
 <script src="site_libs/header-attrs-2.24/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -29,6 +29,9 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -220,6 +223,69 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -227,6 +293,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -267,39 +343,18 @@ $(document).ready(function () {
 
 
 
+<h1 class="title toc-ignore">Plotly</h1>
 
 </div>
 
 
-<p>title: “Plots” output: flexdashboard::flex_dashboard: orientation:
-columns vertical_layout: fill —</p>
-<div id="column" class="section level2" data-width="650">
-<h2>Column</h2>
-<div id="chart-a" class="section level3">
-<h3>Chart A</h3>
 <pre class="r"><code>aisle_summary &lt;- instacart %&gt;%
   group_by(aisle) %&gt;%
   summarize(count = n()) %&gt;% 
   arrange(desc(count)) %&gt;% 
   slice_head(n = 12)
 
-aisle_summary</code></pre>
-<pre><code>## # A tibble: 12 × 2
-##    aisle                          count
-##    &lt;chr&gt;                          &lt;int&gt;
-##  1 fresh vegetables              150609
-##  2 fresh fruits                  150473
-##  3 packaged vegetables fruits     78493
-##  4 yogurt                         55240
-##  5 packaged cheese                41699
-##  6 water seltzer sparkling water  36617
-##  7 milk                           32644
-##  8 chips pretzels                 31269
-##  9 soy lactosefree                26240
-## 10 bread                          23635
-## 11 refrigerated                   23228
-## 12 ice cream ice                  22676</code></pre>
-<pre class="r"><code>ggplot(data = aisle_summary, aes(x = &quot;&quot;, y = count, fill = aisle)) +
+ggplot(data = aisle_summary, aes(x = &quot;&quot;, y = count, fill = aisle)) +
   geom_bar(stat = &quot;identity&quot;, width = 1) +
   coord_polar(theta = &quot;y&quot;) +
   labs(title = &quot;Distribution of Aisles in Instacart Orders&quot;) +
@@ -307,12 +362,6 @@ aisle_summary</code></pre>
   theme(legend.position = &quot;right&quot;) +
   scale_fill_brewer(palette = &quot;Set3&quot;)</code></pre>
 <p><img src="dashboard_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
-</div>
-</div>
-<div id="column-1" class="section level2" data-width="350">
-<h2>Column</h2>
-<div id="chart-b" class="section level3">
-<h3>Chart B</h3>
 <pre class="r"><code>department_summary &lt;- instacart %&gt;%
   group_by(department) %&gt;%
   summarize(count = n()) %&gt;% 
@@ -326,20 +375,17 @@ ggplot(data = department_summary, aes(x = department, y = count)) +
   xlab(&quot;Department&quot;) +
   ylab(&quot;Count&quot;)</code></pre>
 <p><img src="dashboard_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
-</div>
-<div id="chart-c" class="section level3">
-<h3>Chart C</h3>
 <pre class="r"><code>ggplot(instacart, aes(x = &quot;&quot;, y = order_hour_of_day)) +
   geom_boxplot(fill = &quot;lightblue&quot;) +
   labs(title = &quot;Boxplot of Order Hour of Day&quot;) +
   theme_minimal() +
   ylab(&quot;Order Hour of Day&quot;)</code></pre>
 <p><img src="dashboard_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+
+
+
 </div>
 </div>
-
-
-
 
 </div>
 
@@ -372,6 +418,35 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
