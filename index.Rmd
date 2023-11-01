@@ -8,5 +8,5 @@ I am a first-year Master's student at Columbia University. I have a Yorkie named
 
 Here is a picture of my dog: 
 
-
+![](images/coco.jpg)
 
