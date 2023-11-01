@@ -7,7 +7,7 @@ navbar:
       href: index.html
     - text: "Resume"
       href: resume.html
-    - text: "Dashboard"
+    - text: "Plotly"
       href: dashboard.html
     - text: "Contact Me"
       href: about.html
