@@ -250,7 +250,7 @@ $(document).ready(function () {
   <a href="resume.html">Resume</a>
 </li>
 <li>
-  <a href="dashboard.Rmd">Dashboard</a>
+  <a href="dashboard.html">Dashboard</a>
 </li>
 <li>
   <a href="about.html">Contact Me</a>
@@ -271,8 +271,72 @@ $(document).ready(function () {
 </div>
 
 
-<p>title: “Untitled” output: flexdashboard::flex_dashboard: orientation:
+<p>title: “Plots” output: flexdashboard::flex_dashboard: orientation:
 columns vertical_layout: fill —</p>
+<div id="column" class="section level2" data-width="650">
+<h2>Column</h2>
+<div id="chart-a" class="section level3">
+<h3>Chart A</h3>
+<pre class="r"><code>aisle_summary &lt;- instacart %&gt;%
+  group_by(aisle) %&gt;%
+  summarize(count = n()) %&gt;% 
+  arrange(desc(count)) %&gt;% 
+  slice_head(n = 12)
+
+aisle_summary</code></pre>
+<pre><code>## # A tibble: 12 × 2
+##    aisle                          count
+##    &lt;chr&gt;                          &lt;int&gt;
+##  1 fresh vegetables              150609
+##  2 fresh fruits                  150473
+##  3 packaged vegetables fruits     78493
+##  4 yogurt                         55240
+##  5 packaged cheese                41699
+##  6 water seltzer sparkling water  36617
+##  7 milk                           32644
+##  8 chips pretzels                 31269
+##  9 soy lactosefree                26240
+## 10 bread                          23635
+## 11 refrigerated                   23228
+## 12 ice cream ice                  22676</code></pre>
+<pre class="r"><code>ggplot(data = aisle_summary, aes(x = &quot;&quot;, y = count, fill = aisle)) +
+  geom_bar(stat = &quot;identity&quot;, width = 1) +
+  coord_polar(theta = &quot;y&quot;) +
+  labs(title = &quot;Distribution of Aisles in Instacart Orders&quot;) +
+  theme_minimal() +
+  theme(legend.position = &quot;right&quot;) +
+  scale_fill_brewer(palette = &quot;Set3&quot;)</code></pre>
+<p><img src="dashboard_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+</div>
+</div>
+<div id="column-1" class="section level2" data-width="350">
+<h2>Column</h2>
+<div id="chart-b" class="section level3">
+<h3>Chart B</h3>
+<pre class="r"><code>department_summary &lt;- instacart %&gt;%
+  group_by(department) %&gt;%
+  summarize(count = n()) %&gt;% 
+  arrange(desc(count))
+
+ggplot(data = department_summary, aes(x = department, y = count)) +
+  geom_bar(stat = &quot;identity&quot;, fill = &quot;salmon&quot;) +
+  labs(title = &quot;Number of Products Ordered from Each Department&quot;) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  xlab(&quot;Department&quot;) +
+  ylab(&quot;Count&quot;)</code></pre>
+<p><img src="dashboard_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
+<div id="chart-c" class="section level3">
+<h3>Chart C</h3>
+<pre class="r"><code>ggplot(instacart, aes(x = &quot;&quot;, y = order_hour_of_day)) +
+  geom_boxplot(fill = &quot;lightblue&quot;) +
+  labs(title = &quot;Boxplot of Order Hour of Day&quot;) +
+  theme_minimal() +
+  ylab(&quot;Order Hour of Day&quot;)</code></pre>
+<p><img src="dashboard_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+</div>
+</div>
 
 
 

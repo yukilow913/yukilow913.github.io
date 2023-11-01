@@ -1,8 +1,74 @@
-title: "Untitled"
+title: "Plots"
 output: 
   flexdashboard::flex_dashboard:
     orientation: columns
     vertical_layout: fill
 ---
+
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+
+library(tidyverse)
+library(plotly)
+library(p8105.datasets)
+
+data("instacart")
+head(instacart)
+
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r}
+aisle_summary <- instacart %>%
+  group_by(aisle) %>%
+  summarize(count = n()) %>% 
+  arrange(desc(count)) %>% 
+  slice_head(n = 12)
+
+aisle_summary
+
+ggplot(data = aisle_summary, aes(x = "", y = count, fill = aisle)) +
+  geom_bar(stat = "identity", width = 1) +
+  coord_polar(theta = "y") +
+  labs(title = "Distribution of Aisles in Instacart Orders") +
+  theme_minimal() +
+  theme(legend.position = "right") +
+  scale_fill_brewer(palette = "Set3")
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+department_summary <- instacart %>%
+  group_by(department) %>%
+  summarize(count = n()) %>% 
+  arrange(desc(count))
+
+ggplot(data = department_summary, aes(x = department, y = count)) +
+  geom_bar(stat = "identity", fill = "salmon") +
+  labs(title = "Number of Products Ordered from Each Department") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  xlab("Department") +
+  ylab("Count")
+```
+
+### Chart C
+
+```{r}
+ggplot(instacart, aes(x = "", y = order_hour_of_day)) +
+  geom_boxplot(fill = "lightblue") +
+  labs(title = "Boxplot of Order Hour of Day") +
+  theme_minimal() +
+  ylab("Order Hour of Day")
+```
 
 
