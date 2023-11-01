@@ -1,0 +1,60 @@
+title: "Untitled"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+
+library(tidyverse)
+library(plotly)
+library(dplyr)
+library(p8105.datasets)
+
+nyc_inspections_grades <- nyc_inspections %>% 
+  filter(grade == "A" | grade == 'B' | grade == 'C')
+
+nyc_inspections_scores <- nyc_inspections %>% 
+  na.omit(scores)
+
+zipcode_scores <- nyc_inspections %>%
+  group_by(zipcode) %>% 
+  na.omit(score) %>% 
+  summarise(avg_scores = mean(scores))
+
+zipcode_scores
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r}
+ggplot(nyc_inspections_grades, aes(x = grade)) +
+  geom_bar(fill = "blue") +
+  labs(title = "Distribution of Inspection Grades", x = "Grade", y = "Count")
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+ggplot(nyc_inspections_scores, aes(y = score)) +
+  geom_boxplot(fill = "green") +
+  labs(title = "Distribution of Inspection Scores", x = "", y = "Score")
+```
+
+### Chart C
+
+```{r}
+nyc_inspections$inspection_date <- as.Date(nyc_inspections$inspection_date)
+
+ggplot(nyc_inspections, aes(x = inspection_date, y = score)) +
+  geom_line(color = "red") +
+  labs(title = "Inspection Scores Over Time", x = "Date", y = "Score")
+```
