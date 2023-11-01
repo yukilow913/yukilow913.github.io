@@ -4,6 +4,8 @@ output:
   html_document:
     toc: yes
     toc_float: yes
+  pdf_document:
+    toc: yes
 ---
 
 My GitHub account is linked [here](https://github.com/yukilow913).
