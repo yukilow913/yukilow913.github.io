@@ -16,7 +16,6 @@ library(p8105.datasets)
 
 data("instacart")
 head(instacart)
-
 ```
 
 
