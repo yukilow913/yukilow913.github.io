@@ -7,6 +7,8 @@ navbar:
       href: index.html
     - text: "Resume"
       href: resume.html
+    - text: "Dashboard"
+      href: dashboard.Rmd
     - text: "Contact Me"
       href: about.html
 output:
