@@ -8,6 +8,8 @@ navbar:
     - text: "Resume"
       href: resume.html
     - text: "Plotly"
+      href: plotly.html
+    - text: "Dashboard"
       href: dashboard.html
     - text: "Contact Me"
       href: about.html

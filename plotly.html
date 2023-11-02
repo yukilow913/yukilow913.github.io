@@ -11,7 +11,7 @@
 
 
 
-<title>Feel free to see my other projects and reach out to me!</title>
+<title>Plotly</title>
 
 <script src="site_libs/header-attrs-2.24/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -346,18 +346,44 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Feel free to see my other projects and
-reach out to me!</h1>
+<h1 class="title toc-ignore">Plotly</h1>
 
 </div>
 
 
-<p>My GitHub account is linked <a
-href="https://github.com/yukilow913">here</a>.</p>
-<p>My LinkedIn is linked <a
-href="www.linkedin.com/in/yuki-low-b14487223">here</a>.</p>
-<p>My email is <a href="mailto:yl5503@cumc.columbia.edu"
-class="email">yl5503@cumc.columbia.edu</a>.</p>
+<pre class="r"><code>aisle_summary &lt;- instacart %&gt;%
+  group_by(aisle) %&gt;%
+  summarize(count = n()) %&gt;% 
+  arrange(desc(count)) %&gt;% 
+  slice_head(n = 12)
+
+ggplot(data = aisle_summary, aes(x = &quot;&quot;, y = count, fill = aisle)) +
+  geom_bar(stat = &quot;identity&quot;, width = 1) +
+  coord_polar(theta = &quot;y&quot;) +
+  labs(title = &quot;Distribution of Aisles in Instacart Orders&quot;) +
+  theme_minimal() +
+  theme(legend.position = &quot;right&quot;) +
+  scale_fill_brewer(palette = &quot;Set3&quot;)</code></pre>
+<p><img src="plotly_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<pre class="r"><code>department_summary &lt;- instacart %&gt;%
+  group_by(department) %&gt;%
+  summarize(count = n()) %&gt;% 
+  arrange(desc(count))
+
+ggplot(data = department_summary, aes(x = department, y = count)) +
+  geom_bar(stat = &quot;identity&quot;, fill = &quot;salmon&quot;) +
+  labs(title = &quot;Number of Products Ordered from Each Department&quot;) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  xlab(&quot;Department&quot;) +
+  ylab(&quot;Count&quot;)</code></pre>
+<p><img src="plotly_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<pre class="r"><code>ggplot(instacart, aes(x = &quot;&quot;, y = order_hour_of_day)) +
+  geom_boxplot(fill = &quot;lightblue&quot;) +
+  labs(title = &quot;Boxplot of Order Hour of Day&quot;) +
+  theme_minimal() +
+  ylab(&quot;Order Hour of Day&quot;)</code></pre>
+<p><img src="plotly_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 
 
 
