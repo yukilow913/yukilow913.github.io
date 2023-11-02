@@ -15,31 +15,28 @@ library(tidyverse)
 library(plotly)
 library(p8105.datasets)
 
-data("nyc_airbnb")
-
-nyc_airbnb = 
-  nyc_airbnb |> 
-  mutate(stars = review_scores_location / 2) |> 
-  select(borough = neighbourhood_group, 
-         neighbourhood, stars, price, room_type, lat, long) |> 
-  drop_na(stars) |> 
-  filter(
-    borough == "Manhattan",
-    room_type == "Entire home/apt",
-    price %in% 100:500
-  )
 ```
 
 
-Column {data-width=650}
+Column {data-width=800}
 -----------------------------------------------------------------------
 
 ### Chart A
 
 ```{r}
-nyc_airbnb |> 
-  mutate(neighbourhood = fct_reorder(neighbourhood, price)) |> 
-  plot_ly(y = ~price, color = ~neighbourhood, type = "box", colors = "viridis")
+aisle_summary <- instacart %>%
+  group_by(aisle) %>%
+  summarize(count = n()) %>% 
+  arrange(desc(count)) %>% 
+  slice_head(n = 12)
+
+ggplot(data = aisle_summary, aes(x = "", y = count, fill = aisle)) +
+  geom_bar(stat = "identity", width = 1) +
+  coord_polar(theta = "y") +
+  labs(title = "Distribution of Aisles in Instacart Orders") +
+  theme_minimal() +
+  theme(legend.position = "right") +
+  scale_fill_brewer(palette = "Set3")
 ```
 
 Column {data-width=350}
@@ -48,20 +45,26 @@ Column {data-width=350}
 ### Chart B
 
 ```{r}
-nyc_airbnb |> 
-  mutate(text_label = str_c("Price: $", price, "\nRating: ", stars)) |> 
-  plot_ly(
-    x = ~lat, y = ~long, color = ~price, text = ~text_label,
-    type = "scatter", mode = "markers", alpha = 0.5)
+department_summary <- instacart %>%
+  group_by(department) %>%
+  summarize(count = n()) %>% 
+  arrange(desc(count))
+
+ggplot(data = department_summary, aes(x = department, y = count)) +
+  geom_bar(stat = "identity", fill = "salmon") +
+  labs(title = "Number of Products Ordered from Each Department") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  xlab("Department") +
+  ylab("Count")
 ```
 
 ### Chart C
 
 ```{r}
-nyc_airbnb |> 
-  count(neighbourhood) |> 
-  mutate(neighbourhood = fct_reorder(neighbourhood, n)) |> 
-  plot_ly(
-    x = ~neighbourhood, y = ~n, color = ~neighbourhood,
-    type = "bar", colors = "viridis")
+ggplot(instacart, aes(x = "", y = order_hour_of_day)) +
+  geom_boxplot(fill = "lightblue") +
+  labs(title = "Boxplot of Order Hour of Day") +
+  theme_minimal() +
+  ylab("Order Hour of Day")
 ```
